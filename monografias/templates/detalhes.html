@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Monografias/Detalhes</h1>
+    {% for e in monografias %}
+    <ul>
+            <li>{{item.titulo}}</li>
+            <li>{{item.discente}}</li>
+            <li>{{item.orientador}}</li>
+            <li>{{item.coorientador}}</li>
+            <li>{{item.dat}}</li>
+    </ul>
+    {% endfor %}
+
+
+{% endblock %}

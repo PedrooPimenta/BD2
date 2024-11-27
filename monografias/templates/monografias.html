@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Monografias</h1>
+    <p>Valor {{valor}}</p>
+    <form action="" method="post" nome="formulario">
+      {% csrf_token %}
+      <label for="inicial">Ano Inicial:</label>
+        <select name="ano_inicial" id="inicial">
+          <option value="2006" selected="selected">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+        </select>
+
+      <label for="final">Ano Final:</label>
+          <select name="ano_final" id="final">
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019" selected="selected">2019</option>
+        </select>
+      <input triy="submit" value="ok">
+
+    </form>
+      
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope=>Titulo</th>
+            <th scope=>Discente</th>
+            <th scope=>Orientador</th>
+            <th scope=>Coorientador</th>
+            <th scope=>Ano</th>
+         </tr>
+        </thead>
+        <tbody>
+            {% for e in lista %}
+          <tr>
+            <td><a href="{% url 'detalhes' pk=e.pk %}"> {{e.titulo}} </a></td>
+            <td>{{e.discente}}</td>
+            <td>{{e.orientador}}</td>
+            <td>{{e.coorientador}}</td>
+            <td>{{e.dat}}</td>
+            <td>
+              <a href="{% url 'editar_monografia' pk=e.pk %}" class="btn btn-warning btn-sm">Editar</a>
+              <a href="{% url 'deletar_monografia' pk=e.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+          </td>
+          </tr>
+          <tr>
+           
+          {% endfor %}
+        </tbody>
+      </table>
+    
+
+{% endblock %}
